@@ -32,7 +32,8 @@ public class Login extends javax.swing.JFrame {
         
         initComponents();
     }
-
+    
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -126,11 +127,16 @@ private boolean validate_login(String username,String password) {
        PreparedStatement pst =   conn.prepareStatement("Select * from login where username = '"
                                 +username+"' and password = '"+password+"'");
        ResultSet rs = pst.executeQuery();    
-       //conn.close();
+       
        if(rs.next())            
-           return true;    
+       {
+           conn.close();
+       return true;
+       }    
        else
-           return false;            
+       {    conn.close();
+           return false;
+       }            
    }
    catch(Exception e){
        e.printStackTrace();
