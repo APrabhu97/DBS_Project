@@ -20,7 +20,8 @@ public class Conn {
                 try{          //Connection Code 
                     Class.forName("com.mysql.jdbc.Driver");  // MySQL database connection
                     Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/batman?zeroDateTimeBehavior=convertToNull",
-                                                     "root","robin");     
+                                                     "root","robin");  
+                    int t;
                     return conn;
                 }
                 catch(Exception e){
