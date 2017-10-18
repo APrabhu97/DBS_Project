@@ -115,9 +115,8 @@ public class Register extends javax.swing.JFrame {
     }//GEN-LAST:event_tf1ActionPerformed
 private boolean validate_login(String username,String password) {
    try{          //Connection Code 
-       Class.forName("com.mysql.jdbc.Driver");  // MySQL database connection
-       Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/batman?zeroDateTimeBehavior=convertToNull",
-                                                     "root","robin");     
+        // MySQL database connection
+       Connection conn = Conn.connect();
        PreparedStatement pst =   conn.prepareStatement("insert into login values('"+username+"' , '"+password+"')");
        pst.execute();
        conn.close();
