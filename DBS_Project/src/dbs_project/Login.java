@@ -141,7 +141,8 @@ private boolean validate_login(String username,String password) {
        PreparedStatement pst =   conn.prepareStatement("Select * from login where username = '"
                                 +username+"' and password = '"+password+"'");
        ResultSet rs = pst.executeQuery();    
-       
+       rs.next();
+       Warden.warden_username=username;
        if(rs.next())            
        {
            conn.close();
