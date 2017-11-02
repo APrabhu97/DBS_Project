@@ -23,7 +23,7 @@ public class Warden extends javax.swing.JFrame {
     public int wID;
     public String wName;
     long wPhno;
-    public static String warden_username;
+    String warden_username=Login.username;
     String wAddress;
     int wBlockNo;
     /**
@@ -247,7 +247,7 @@ public class Warden extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
-        new AccountSettings().setVisible(true);
+        new AccountSettings(warden_username).setVisible(true);
         this.setVisible(false);
         
     }//GEN-LAST:event_jLabel13MouseClicked

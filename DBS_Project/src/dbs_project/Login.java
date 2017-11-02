@@ -24,7 +24,8 @@ import com.alee.laf.WebLookAndFeel;
  * @author mahe
  */
 public class Login extends javax.swing.JFrame {
-
+    public static String username;
+    
     /**
      * Creates new form Login
      */
@@ -135,14 +136,14 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
 
-private boolean validate_login(String username,String password) {
+private boolean validate_login(String username1,String password) {
    try{          //Connection Code 
        Connection conn = Conn.connect();
        PreparedStatement pst =   conn.prepareStatement("Select * from login where username = '"
-                                +username+"' and password = '"+password+"'");
+                                +username1+"' and password = '"+password+"'");
        ResultSet rs = pst.executeQuery();    
        rs.next();
-       Warden.warden_username=username;
+       username=username1;
        if(rs.next())            
        {
            conn.close();
