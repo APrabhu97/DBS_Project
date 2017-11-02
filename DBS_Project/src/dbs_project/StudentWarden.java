@@ -46,13 +46,23 @@ public class StudentWarden extends javax.swing.JFrame {
 
         jLabel3.setText("View Current Student Details");
 
-        jLabel4.setText("Update Watchlist");
+        jLabel4.setText("View/Update Watchlist");
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
 
         jLabel5.setText("Approve Fines");
 
         jLabel6.setText("Check Leave Requests");
 
         jLabel7.setText("View Inbox");
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
 
         jLabel8.setText("<--Back");
         jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -129,6 +139,16 @@ public class StudentWarden extends javax.swing.JFrame {
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel8MouseClicked
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        new Inbox().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jLabel7MouseClicked
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+       new Watchlist().setVisible(true);
+       this.setVisible(false);
+    }//GEN-LAST:event_jLabel4MouseClicked
 
     /**
      * @param args the command line arguments

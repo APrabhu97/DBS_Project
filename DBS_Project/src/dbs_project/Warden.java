@@ -247,6 +247,8 @@ public class Warden extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
+        new AccountSettings().setVisible(true);
+        this.setVisible(false);
         
     }//GEN-LAST:event_jLabel13MouseClicked
 
