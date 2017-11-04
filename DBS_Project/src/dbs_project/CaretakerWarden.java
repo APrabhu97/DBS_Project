@@ -58,6 +58,11 @@ public class CaretakerWarden extends javax.swing.JFrame {
         jToggleButton1.setText("Logout");
 
         jLabel4.setText("Enroll  a Caretaker");
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -118,6 +123,11 @@ public class CaretakerWarden extends javax.swing.JFrame {
         new Warden().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jLabel8MouseClicked
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+       new Register_Caretaker().setVisible(true);
+       this.setVisible(false);
+    }//GEN-LAST:event_jLabel4MouseClicked
 
     /**
      * @param args the command line arguments

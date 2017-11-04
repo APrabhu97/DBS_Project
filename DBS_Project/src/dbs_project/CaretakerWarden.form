@@ -127,6 +127,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Enroll  a Caretaker"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel4MouseClicked"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
