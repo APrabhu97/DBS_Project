@@ -20,7 +20,7 @@ import javax.swing.ImageIcon;
  * @author sichi
  */
 public class Warden extends javax.swing.JFrame {
-    public int wID;
+    public static int wID;
     public String wName;
     long wPhno;
     String warden_username=Login.username;
@@ -34,7 +34,7 @@ public class Warden extends javax.swing.JFrame {
         try
         {
         Connection conn = Conn.connect();
-        PreparedStatement pst =   conn.prepareStatement("Select * from warden_details where username = '"
+        PreparedStatement pst =   conn.prepareStatement("Select * from warden_details where warden_username = '"
                                 +warden_username+"'");
         ResultSet rs = pst.executeQuery();    
         rs.next();
@@ -55,7 +55,7 @@ public class Warden extends javax.swing.JFrame {
             wBlockNo = Integer.parseInt(rs.getString(5));
             jLabel12.setText(wBlockNo+"");
             
-            Icon src = new ImageIcon(new ImageIcon("/Users/sichi/Desktop/test/warden/"+wID+".png").getImage().getScaledInstance(lb1.getWidth(), lb1.getHeight(), Image.SCALE_SMOOTH));
+            Icon src = new ImageIcon(new ImageIcon("C:\\Users\\mahe\\Desktop\\profile photos\\Warden\\"+Warden.wID+".jpg").getImage().getScaledInstance(lb1.getWidth(), lb1.getHeight(), Image.SCALE_SMOOTH));
             lb1.setIcon(src);
                         
         } catch (SQLException ex) {

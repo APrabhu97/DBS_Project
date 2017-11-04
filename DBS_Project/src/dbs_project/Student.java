@@ -14,6 +14,7 @@ public class Student extends javax.swing.JFrame {
     /**
      * Creates new form Student
      */
+    public static int sID;
     public Student() {
         initComponents();
     }
