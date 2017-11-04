@@ -42,7 +42,7 @@ public class WebCapture {
 		if(ch==0) // for warden
                     ImageIO.write(image, "PNG", new File("C:\\Users\\mahe\\Desktop\\profile photos\\Warden\\"+Warden.wID+".jpg"));
                 else if(ch==1) // for student
-                    ImageIO.write(image, "PNG", new File("C:\\Users\\mahe\\Desktop\\profile photos\\Student\\"+Student.wid+".jpg"));
+                    ImageIO.write(image, "PNG", new File("C:\\Users\\mahe\\Desktop\\profile photos\\Student\\"+Student.sID+".jpg"));
                 else // for caretaker
                     ImageIO.write(image, "PNG", new File("C:\\Users\\mahe\\Desktop\\profile photos\\Caretaker\\"+Caretaker.wid+".jpg"));
                 webcam.close();
