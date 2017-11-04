@@ -127,7 +127,7 @@ private boolean validate_login(String username1,String password) {
        PreparedStatement pst =   conn.prepareStatement("Select * from login where username = '"
                                 +username1+"' and password = '"+password+"'");
        ResultSet rs = pst.executeQuery();    
-       rs.next();
+       
        username=username1;
        if(rs.next())            
        {
@@ -171,7 +171,7 @@ int numberOfTries = 3;
                     PreparedStatement pst =   conn.prepareStatement("Select * from warden_details where warden_username = '"
                             +username1+"'");
                     ResultSet rs = pst.executeQuery();    
-                    rs.next();
+                   
                     if(rs.next())            
                     {       conn.close();
                         new Warden().setVisible(true);
@@ -186,7 +186,7 @@ int numberOfTries = 3;
                     PreparedStatement pst1 =   conn.prepareStatement("Select * from caretaker_details where caretaker_username = '"
                             +username1+"'");
                     ResultSet rs1 = pst1.executeQuery();    
-                    rs1.next();
+                    
                     if(rs1.next())            
                     {  
                         conn.close();
@@ -202,7 +202,7 @@ int numberOfTries = 3;
                     PreparedStatement pst2 =   conn.prepareStatement("Select * from student where student_username = '"
                             +username1+"'");
                     ResultSet rs2 = pst2.executeQuery();    
-                    rs2.next();
+                   
                     if(rs2.next())            
                     {  
                         conn.close();
@@ -213,6 +213,11 @@ int numberOfTries = 3;
                     catch (SQLException ex) {
                     Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                     if(username1.equals("DBA")){
+                         this.setVisible(false);
+                         new DBA().setVisible(true);
+                         
+                     }
             }
             else{
                 numberOfTries--;
