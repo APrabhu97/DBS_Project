@@ -156,7 +156,7 @@ public class DBARecoverPassword extends javax.swing.JFrame {
             ResultSet rs = pst.executeQuery();    
             rs.next();
             String oldpassword=rs.getString(2);
-            if(!(oldpassword.equals(npass)))
+            if(!(oldpassword.equals(HashingPassword.hashPassword(npass))))
             {PreparedStatement pst1 =   conn.prepareStatement("update login set password='"+cnpass+"'where username='"+uname);
              pst1.executeUpdate();
              jLabel6.setVisible(true);}

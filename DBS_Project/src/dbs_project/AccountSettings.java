@@ -169,7 +169,7 @@ public class AccountSettings extends javax.swing.JFrame {
         String npass=TF1.getText();
         String cnpass1=TF2.getText();
         String cnpass=HashingPassword.hashPassword(cnpass1);
-        if(npass.equals(cnpass))
+        if(npass.equals(cnpass1))
         {       
             try{
              Connection conn = Conn.connect();
@@ -178,8 +178,8 @@ public class AccountSettings extends javax.swing.JFrame {
             ResultSet rs = pst.executeQuery();    
             rs.next();
             String oldpassword=rs.getString(2);
-            if(!(oldpassword.equals(npass)))
-            {PreparedStatement pst1 =   conn.prepareStatement("update login set password='"+npass+"'where username='"+username);
+            if(!(oldpassword.equals(HashingPassword.hashPassword(npass))))
+            {PreparedStatement pst1 =   conn.prepareStatement("update login set password='"+cnpass+"'where username='"+username);
              pst1.executeUpdate();
              jLabel6.setVisible(true);}
             else {
