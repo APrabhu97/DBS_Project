@@ -5,6 +5,8 @@
  */
 package dbs_project;
 
+import java.awt.Color;
+
 /**
  *
  * @author sichi
@@ -68,6 +70,12 @@ public class StudentWarden extends javax.swing.JFrame {
         jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel8MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel8MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel8MouseExited(evt);
             }
         });
 
@@ -137,7 +145,8 @@ public class StudentWarden extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-        // TODO add your handling code here:
+        new Warden().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jLabel8MouseClicked
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
@@ -149,6 +158,14 @@ public class StudentWarden extends javax.swing.JFrame {
        new Watchlist().setVisible(true);
        this.setVisible(false);
     }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void jLabel8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseEntered
+       jLabel8.setForeground(Color.BLUE); 
+    }//GEN-LAST:event_jLabel8MouseEntered
+
+    private void jLabel8MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseExited
+       jLabel8.setForeground(Color.BLACK); 
+    }//GEN-LAST:event_jLabel8MouseExited
 
     /**
      * @param args the command line arguments
