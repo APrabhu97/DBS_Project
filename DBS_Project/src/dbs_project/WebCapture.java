@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package dbs_project;
-import com.github.sarxos.webcam.Webcam;
+import com.github.sarxos.webcam.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -39,12 +39,12 @@ public class WebCapture {
 		BufferedImage image = webcam.getImage();
 
 		// save image to PNG file
-		if(ch==0) // for warden
+		/*if(ch==0) // for warden
                     ImageIO.write(image, "PNG", new File("C:\\Users\\mahe\\Desktop\\profile photos\\Warden\\"+Warden.wID+".jpg"));
                 else if(ch==1) // for student
                     ImageIO.write(image, "PNG", new File("C:\\Users\\mahe\\Desktop\\profile photos\\Student\\"+Student.sID+".jpg"));
                 else // for caretaker
-                   // ImageIO.write(image, "PNG", new File("C:\\Users\\mahe\\Desktop\\profile photos\\Caretaker\\"+Caretaker.wid+".jpg"));
+                   // ImageIO.write(image, "PNG", new File("C:\\Users\\mahe\\Desktop\\profile photos\\Caretaker\\"+Caretaker.wid+".jpg"));*/
                 webcam.close();
     }
     public static void main(String[] args) throws IOException {
