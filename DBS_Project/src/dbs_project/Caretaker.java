@@ -11,6 +11,7 @@ package dbs_project;
  */
 public class Caretaker extends javax.swing.JFrame {
 
+    public static String cID;
     /**
      * Creates new form Caretaker
      */

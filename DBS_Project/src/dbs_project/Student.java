@@ -153,7 +153,7 @@ public class Student extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel8MouseClicked
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-       new StudentProfile(sID).setVisible(true);
+       new StudentProfile().setVisible(true);
        this.setVisible(false);
     }//GEN-LAST:event_jLabel4MouseClicked
 

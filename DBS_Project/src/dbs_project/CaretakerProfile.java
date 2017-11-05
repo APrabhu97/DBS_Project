@@ -5,17 +5,73 @@
  */
 package dbs_project;
 
+import java.awt.Image;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author mahe
  */
 public class CaretakerProfile extends javax.swing.JFrame {
+    
+    public String cName;
+    String cPhno;
+    String cDOB;
+   // String roomNo;
+    String cAddress;
+    String cBlockNo;
+    //String sSem;
+    String cEmail;
 
     /**
      * Creates new form StudentProfile
      */
     public CaretakerProfile() {
         initComponents();
+        if(tf1.getText()!=null)
+        {
+            try
+        {
+        Connection conn = Conn.connect();
+        PreparedStatement pst =   conn.prepareStatement("Select * from caretaker_details where caretakerID = '"
+                                +Student.sID+"'");
+        ResultSet rs = pst.executeQuery();    
+        rs.next();
+            cName = rs.getString(2);
+            tf2.setText(cName);
+           
+             cDOB = rs.getString(2);
+            tf3.setText(cDOB);          
+            
+            cPhno = rs.getString(3);
+            tf8.setText(cPhno+"");
+            //sID = Integer.parseInt(rs.getString(2));
+            tf1.setText(Caretaker.cID+"");
+            tf2.setText(cName);
+          //  roomNo = rs.getString(2);
+            //tf4.setText(sName);
+            cAddress = rs.getString(2);
+            tf10.setText(cAddress);
+            
+           // sBlockNo = rs.getString(5);
+           // tf5.setText(sBlockNo+"");
+            cEmail = rs.getString(2);
+            tf7.setText(cEmail);
+      //      sCourse = rs.getString(2);
+        //    tf9.setText(sName);
+            Icon src = new ImageIcon(new ImageIcon("C:\\Users\\mahe\\Desktop\\profile photos\\Caretaker\\"+Caretaker.cID+".jpg").getImage().getScaledInstance(jLabel4.getWidth(), jLabel4.getHeight(), Image.SCALE_SMOOTH));
+            jLabel4.setIcon(src);
+                        
+        } catch (SQLException ex) {
+            Logger.getLogger(Warden.class.getName()).log(Level.SEVERE, null, ex);
+        }
         submit.setVisible(false);
         tf1.setEnabled(false);
         tf2.setEnabled(false);
@@ -28,6 +84,7 @@ public class CaretakerProfile extends javax.swing.JFrame {
         
         tf10.setEnabled(false);
     }
+}
 
     /**
      * This method is called from within the constructor to initialize the form.

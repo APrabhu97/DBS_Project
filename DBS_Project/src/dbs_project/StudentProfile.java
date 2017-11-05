@@ -35,15 +35,15 @@ public class StudentProfile extends javax.swing.JFrame {
     /**
      * Creates new form StudentProfile
      */
-    public StudentProfile(int sID) {
-        
+    public StudentProfile() {
+        initComponents();
         if(tf1.getText()!=null)
         {
             try
         {
         Connection conn = Conn.connect();
         PreparedStatement pst =   conn.prepareStatement("Select * from student where studentID = '"
-                                +sID+"'");
+                                +Student.sID+"'");
         ResultSet rs = pst.executeQuery();    
         rs.next();
             sName = rs.getString(2);
@@ -55,7 +55,7 @@ public class StudentProfile extends javax.swing.JFrame {
             sPhno = rs.getString(3);
             jLabel8.setText(sPhno+"");
             //sID = Integer.parseInt(rs.getString(2));
-            tf1.setText(sID+"");
+            tf1.setText(Student.sID+"");
             tf2.setText(sName);
             roomNo = rs.getString(2);
             tf4.setText(sName);
