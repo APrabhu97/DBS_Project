@@ -172,6 +172,12 @@ public class StudentProfile extends javax.swing.JFrame {
 
         jLabel7.setText("Date of Birth:");
 
+        tf3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf3ActionPerformed(evt);
+            }
+        });
+
         jLabel8.setText("Semester:");
 
         jLabel9.setText("Email ID:");
@@ -340,6 +346,10 @@ public class StudentProfile extends javax.swing.JFrame {
         
         // write the update query here!
     }//GEN-LAST:event_submitActionPerformed
+
+    private void tf3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf3ActionPerformed
 
     /**
      * @param args the command line arguments
