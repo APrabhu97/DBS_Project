@@ -48,10 +48,16 @@ public class DBA extends javax.swing.JFrame {
 
         jLabel1.setText("ROOT ACCESS(DBA)");
 
-        jLabel2.setText("Add/Remove Wardens");
+        jLabel2.setText("Add Wardens");
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel2MouseExited(evt);
             }
         });
 
@@ -167,6 +173,14 @@ public class DBA extends javax.swing.JFrame {
     private void jLabel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseExited
  jLabel3.setForeground(Color.BLACK);         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel3MouseExited
+
+    private void jLabel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseEntered
+        jLabel2.setForeground(Color.BLUE); 
+    }//GEN-LAST:event_jLabel2MouseEntered
+
+    private void jLabel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseExited
+        jLabel2.setForeground(Color.BLACK); 
+    }//GEN-LAST:event_jLabel2MouseExited
 
     /**
      * @param args the command line arguments

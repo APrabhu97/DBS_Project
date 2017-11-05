@@ -185,7 +185,9 @@ public class Register_Warden extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 int flag=0;
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       Warden.wID=Integer.parseInt(tf3.getText());
         new WebCapture(0);
+        JOptionPane.showMessageDialog(null,"Photo taken Successfuly");
         flag=1;
     }//GEN-LAST:event_jButton1ActionPerformed
 private boolean validate_login(String username,String password) {
@@ -194,6 +196,12 @@ private boolean validate_login(String username,String password) {
        Connection conn = Conn.connect();
        PreparedStatement pst =   conn.prepareStatement("insert into login values('"+username+"' , '"+password+"')");
        pst.execute();
+       PreparedStatement pst1 = conn.prepareStatement("insert into warden_details values("+tf3.getText()+",'"
+                                                                                    +tf4.getText()+"','"
+                                                                                    +tf8.getText()+"','"
+                                                                                    +tf6.getText()+"','"
+                                                                                    +username+"')");
+       pst1.execute();
        conn.close();
        return true;           
    }

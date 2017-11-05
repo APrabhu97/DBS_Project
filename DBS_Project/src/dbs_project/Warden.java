@@ -22,10 +22,10 @@ import javax.swing.ImageIcon;
 public class Warden extends javax.swing.JFrame {
     public static int wID;
     public String wName;
-    long wPhno;
+    String wPhno;
     String warden_username=Login.username;
     String wAddress;
-    int wBlockNo;
+    String wBlockNo;
     /**
      * Creates new form Warden
      */
@@ -45,14 +45,13 @@ public class Warden extends javax.swing.JFrame {
             jLabel6.setText(wID+"");
             
             
-            wPhno = Integer.parseInt(rs.getString(3));
+            wPhno = rs.getString(3);
             jLabel8.setText(wPhno+"");
          
 
-            wAddress = rs.getString(4);
-            jLabel9.setText(wAddress);
+         
             
-            wBlockNo = Integer.parseInt(rs.getString(5));
+            wBlockNo = rs.getString(5);
             jLabel12.setText(wBlockNo+"");
             
             Icon src = new ImageIcon(new ImageIcon("C:\\Users\\mahe\\Desktop\\profile photos\\Warden\\"+Warden.wID+".jpg").getImage().getScaledInstance(lb1.getWidth(), lb1.getHeight(), Image.SCALE_SMOOTH));
@@ -78,12 +77,10 @@ public class Warden extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -101,8 +98,6 @@ public class Warden extends javax.swing.JFrame {
 
         jLabel3.setText("Phone Numer :");
 
-        jLabel4.setText("Address :");
-
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setText("WELCOME ");
 
@@ -111,8 +106,6 @@ public class Warden extends javax.swing.JFrame {
         jLabel7.setText("jLabel7");
 
         jLabel8.setText("jLabel8");
-
-        jLabel9.setText("jLabel9");
 
         jLabel10.setText("Choose between :");
 
@@ -153,6 +146,15 @@ public class Warden extends javax.swing.JFrame {
                 .addGap(55, 55, 55)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addGap(39, 39, 39)
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lb1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel10)
                             .addGroup(layout.createSequentialGroup()
@@ -165,31 +167,21 @@ public class Warden extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel2)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel11))
+                                    .addComponent(jLabel1))
                                 .addGap(39, 39, 39)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel12)
                                     .addComponent(jLabel6)
-                                    .addComponent(jLabel9)
                                     .addComponent(jLabel7)
                                     .addComponent(jLabel8))
-                                .addGap(124, 124, 124))
+                                .addGap(130, 130, 130))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addGap(54, 54, 54)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                         .addComponent(jLabel14)
                         .addGap(67, 67, 67))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lb1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13))
-                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -216,12 +208,9 @@ public class Warden extends javax.swing.JFrame {
                             .addComponent(jLabel8))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel9))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel11)
-                            .addComponent(jLabel12))))
+                            .addComponent(jLabel12))
+                        .addGap(25, 25, 25)))
                 .addGap(31, 31, 31)
                 .addComponent(jLabel10)
                 .addGap(18, 18, 18)
@@ -298,12 +287,10 @@ public class Warden extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel lb1;
     // End of variables declaration//GEN-END:variables
 }
