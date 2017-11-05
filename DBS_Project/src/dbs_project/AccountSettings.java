@@ -167,7 +167,8 @@ public class AccountSettings extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         String npass=TF1.getText();
-        String cnpass=TF2.getText();
+        String cnpass1=TF2.getText();
+        String cnpass=HashingPassword.hashPassword(cnpass1);
         if(npass.equals(cnpass))
         {       
             try{

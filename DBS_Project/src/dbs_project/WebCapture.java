@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package dbs_project;
-import com.github.sarxos.webcam.*;
+import com.github.sarxos.webcam.Webcam;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;

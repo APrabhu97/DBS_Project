@@ -5,7 +5,7 @@
  */
 package dbs_project;
 
-import static dbs_project.Warden.wID;
+
 import java.awt.Image;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -23,12 +23,16 @@ import javax.swing.ImageIcon;
 public class LookupStudentDetails extends javax.swing.JFrame {
 
     public String tf1;
-    public static int wID;
+    public static int sID;
     public String sName;
     String sPhno;
-    String student_username=Login.username;
+    String sDOB;
+    String roomNo;
     String sAddress;
-    String sBlockNo;    
+    String sBlockNo;
+    String sSem;
+    String sEmail;
+    String sCourse;
     /**
      * Creates new form LookupStudentDetails
      */
@@ -260,7 +264,9 @@ public class LookupStudentDetails extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         tf1=jTextField1.getText();
-        try
+        if(!tf1.isEmpty())
+        {
+            try
         {
         Connection conn = Conn.connect();
         PreparedStatement pst =   conn.prepareStatement("Select * from student where studentID = '"
@@ -268,28 +274,38 @@ public class LookupStudentDetails extends javax.swing.JFrame {
         ResultSet rs = pst.executeQuery();    
         rs.next();
             sName = rs.getString(2);
-            jLabel7.setText(sName);
+            tf2.setText(sName);
            
-                       
+             sDOB = rs.getString(2);
+            tf3.setText(sName);          
             
             sPhno = rs.getString(3);
             jLabel8.setText(sPhno+"");
-         
-
-         
+            sID = Integer.parseInt(rs.getString(2));
+            
+            tf2.setText(sName);
+            roomNo = rs.getString(2);
+            tf4.setText(sName);
+            sAddress = rs.getString(2);
+            tf10.setText(sName);
             
             sBlockNo = rs.getString(5);
-            jLabel12.setText(sBlockNo+"");
-            
-            Icon src = new ImageIcon(new ImageIcon("C:\\Users\\mahe\\Desktop\\profile photos\\Warden\\"+Warden.wID+".jpg").getImage().getScaledInstance(lb1.getWidth(), lb1.getHeight(), Image.SCALE_SMOOTH));
-            lb1.setIcon(src);
+            tf5.setText(sBlockNo+"");
+            sEmail = rs.getString(2);
+            tf7.setText(sName);
+            sCourse = rs.getString(2);
+            tf9.setText(sName);
+            Icon src = new ImageIcon(new ImageIcon("C:\\Users\\mahe\\Desktop\\profile photos\\Student\\"+Warden.wID+".jpg").getImage().getScaledInstance(jLabel4.getWidth(), jLabel4.getHeight(), Image.SCALE_SMOOTH));
+            jLabel4.setIcon(src);
                         
         } catch (SQLException ex) {
             Logger.getLogger(Warden.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+       
+    }
+       
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    
     /**
      * @param args the command line arguments
      */
