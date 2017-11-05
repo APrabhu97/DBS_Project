@@ -107,12 +107,15 @@ public class Warden extends javax.swing.JFrame {
         jLabel5.setText("WELCOME ");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(186, 14, -1, -1));
 
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("jLabel6");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 54, -1, -1));
 
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("jLabel7");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 79, -1, -1));
 
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("jLabel8");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 104, -1, -1));
 
@@ -138,6 +141,7 @@ public class Warden extends javax.swing.JFrame {
         jLabel11.setText("Block Number :");
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 129, -1, -1));
 
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("jLabel12");
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 129, -1, -1));
 
@@ -152,6 +156,7 @@ public class Warden extends javax.swing.JFrame {
         jLabel14.setText("Photo");
         getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 154, -1, -1));
 
+        lb1.setForeground(new java.awt.Color(255, 255, 255));
         lb1.setText("jLabel16");
         getContentPane().add(lb1, new org.netbeans.lib.awtextra.AbsoluteConstraints(321, 39, 92, 104));
 
