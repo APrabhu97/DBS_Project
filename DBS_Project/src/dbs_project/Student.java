@@ -62,6 +62,11 @@ public class Student extends javax.swing.JFrame {
         jLabel3.setText("Give Attenance(Optional)");
 
         jLabel4.setText("View/Update Current Details");
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
 
         jLabel7.setText("Apply for Leave");
 
@@ -146,6 +151,11 @@ public class Student extends javax.swing.JFrame {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_jLabel8MouseClicked
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+       new StudentProfile(sID).setVisible(true);
+       this.setVisible(false);
+    }//GEN-LAST:event_jLabel4MouseClicked
 
     /**
      * @param args the command line arguments
