@@ -195,13 +195,13 @@ private boolean validate_login(String username,String password) {
         // MySQL database connection
        Connection conn = Conn.connect();
        PreparedStatement pst =   conn.prepareStatement("insert into login values('"+username+"' , '"+password+"')");
-       pst.execute();
+       pst.executeUpdate();
        PreparedStatement pst1 = conn.prepareStatement("insert into warden_details values("+tf3.getText()+",'"
                                                                                     +tf4.getText()+"','"
                                                                                     +tf8.getText()+"','"
                                                                                     +tf6.getText()+"','"
                                                                                     +username+"')");
-       pst1.execute();
+       pst1.executeUpdate();
        conn.close();
        return true;           
    }

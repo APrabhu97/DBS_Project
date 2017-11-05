@@ -5,6 +5,12 @@
  */
 package dbs_project;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author sichi
@@ -50,6 +56,11 @@ public class AddWatchlistEntry extends javax.swing.JFrame {
         jTextField3.setText("jTextField3");
 
         jButton1.setText("Add to Watchlist");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -95,6 +106,27 @@ public class AddWatchlistEntry extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       String name=jTextField1.getText();
+       String sID=jTextField2.getText();
+       String reason=jTextField3.getText();
+       if((!sID.isEmpty())&&(!name.isEmpty()))
+        {
+           try {
+               Connection conn = Conn.connect();
+               PreparedStatement pst =   conn.prepareStatement("insert into watchlist values('"+name+"' , '"+sID+"','"+reason+"')");
+               pst.execute();
+               
+               conn.close();
+           } catch (SQLException ex) {
+               Logger.getLogger(AddWatchlistEntry.class.getName()).log(Level.SEVERE, null, ex);
+           }
+       
+        
+        }
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

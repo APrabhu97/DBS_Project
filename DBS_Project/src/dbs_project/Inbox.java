@@ -5,6 +5,18 @@
  */
 package dbs_project;
 
+import java.awt.BorderLayout;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Vector;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+
 /**
  *
  * @author sichi
@@ -14,8 +26,89 @@ public class Inbox extends javax.swing.JFrame {
     /**
      * Creates new form Inbox
      */
-    public Inbox() {
+    public Inbox(){}
+    public Inbox(String TOID) {
+        ArrayList columnNames = new ArrayList();
+        ArrayList data = new ArrayList();
         initComponents();
+        try (Connection conn = Conn.connect();
+                    PreparedStatement pst =   conn.prepareStatement("Select * from messages where toID = '"
+                            +TOID+"'");
+                    ResultSet rs = pst.executeQuery();)
+        {
+            ResultSetMetaData md = rs.getMetaData();
+            int columns = md.getColumnCount();
+
+            //  Get column names
+            for (int i = 1; i <= columns; i++)
+            {
+                columnNames.add( md.getColumnName(i) );
+            }
+
+            //  Get row data
+            while (rs.next())
+            {
+                ArrayList row = new ArrayList(columns);
+
+                for (int i = 1; i <= columns; i++)
+                {
+                    row.add( rs.getObject(i) );
+                }
+
+                data.add( row );
+            }
+        }
+        catch (SQLException e)
+        {
+            System.out.println( e.getMessage() );
+        }
+
+     
+        Vector columnNamesVector = new Vector();
+        Vector dataVector = new Vector();
+
+        for (int i = 0; i < data.size(); i++)
+        {
+            ArrayList subArray = (ArrayList)data.get(i);
+            Vector subVector = new Vector();
+            for (int j = 0; j < subArray.size(); j++)
+            {
+                subVector.add(subArray.get(j));
+            }
+            dataVector.add(subVector);
+        }
+
+        for (int i = 0; i < columnNames.size(); i++ )
+            columnNamesVector.add(columnNames.get(i));
+
+        //  Create table with database data    
+        JTable table = new JTable(dataVector, columnNamesVector)
+        {
+            public Class getColumnClass(int column)
+            {
+                for (int row = 0; row < getRowCount(); row++)
+                {
+                    Object o = getValueAt(row, column);
+
+                    if (o != null)
+                    {
+                        return o.getClass();
+                    }
+                }
+
+                return Object.class;
+            }
+        };
+
+        JScrollPane scrollPane = new JScrollPane( table );
+        getContentPane().add( scrollPane );
+
+        JPanel buttonPanel = new JPanel();
+        getContentPane().add( buttonPanel, BorderLayout.SOUTH );
+        Inbox frame = new Inbox();
+        frame.setDefaultCloseOperation( EXIT_ON_CLOSE );
+        frame.pack();
+        frame.setVisible(true);
     }
 
     /**
@@ -28,26 +121,48 @@ public class Inbox extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("INBOX");
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(167, 167, 167)
-                .addComponent(jLabel1)
-                .addContainerGap(202, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(167, 167, 167)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jLabel1)
-                .addContainerGap(267, Short.MAX_VALUE))
+                .addGap(34, 34, 34)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(115, Short.MAX_VALUE))
         );
 
         pack();
@@ -83,6 +198,7 @@ public class Inbox extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                
                 new Inbox().setVisible(true);
             }
         });
@@ -90,5 +206,7 @@ public class Inbox extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
