@@ -89,43 +89,35 @@ public class Warden extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         lb1 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Warden ID :");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(55, 54, 59, 14);
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 54, -1, -1));
 
         jLabel2.setText("Name :");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(55, 79, 34, 14);
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 79, -1, -1));
 
         jLabel3.setText("Phone Numer :");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(55, 104, 71, 14);
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 104, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setText("WELCOME ");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(186, 14, 89, 22);
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(186, 14, -1, -1));
 
         jLabel6.setText("jLabel6");
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(165, 54, 34, 14);
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 54, -1, -1));
 
         jLabel7.setText("jLabel7");
-        getContentPane().add(jLabel7);
-        jLabel7.setBounds(165, 79, 34, 14);
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 79, -1, -1));
 
         jLabel8.setText("jLabel8");
-        getContentPane().add(jLabel8);
-        jLabel8.setBounds(165, 104, 34, 14);
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 104, -1, -1));
 
         jLabel10.setText("Choose between :");
-        getContentPane().add(jLabel10);
-        jLabel10.setBounds(55, 199, 88, 14);
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 199, -1, -1));
 
         jButton1.setText("Student");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -133,8 +125,7 @@ public class Warden extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(100, 231, 71, 23);
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 231, -1, -1));
 
         jButton2.setText("Caretaker");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -142,16 +133,13 @@ public class Warden extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2);
-        jButton2.setBounds(222, 231, 81, 23);
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(222, 231, -1, -1));
 
         jLabel11.setText("Block Number :");
-        getContentPane().add(jLabel11);
-        jLabel11.setBounds(55, 129, 71, 14);
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 129, -1, -1));
 
         jLabel12.setText("jLabel12");
-        getContentPane().add(jLabel12);
-        jLabel12.setBounds(165, 129, 40, 14);
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 129, -1, -1));
 
         jLabel13.setText("Change Account Details");
         jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -159,21 +147,17 @@ public class Warden extends javax.swing.JFrame {
                 jLabel13MouseClicked(evt);
             }
         });
-        getContentPane().add(jLabel13);
-        jLabel13.setBounds(321, 297, 114, 14);
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(321, 297, -1, -1));
 
         jLabel14.setText("Photo");
-        getContentPane().add(jLabel14);
-        jLabel14.setBounds(350, 154, 28, 14);
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 154, -1, -1));
 
         lb1.setText("jLabel16");
-        getContentPane().add(lb1);
-        lb1.setBounds(321, 39, 92, 104);
+        getContentPane().add(lb1, new org.netbeans.lib.awtextra.AbsoluteConstraints(321, 39, 92, 104));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbs_project/water-1330252_960_720.jpg"))); // NOI18N
-        jLabel4.setText("jLabel4");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(0, 0, 440, 310);
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbs_project/d_login.jpg"))); // NOI18N
+        jLabel9.setText("jLabel9");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 310));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -241,11 +225,11 @@ public class Warden extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel lb1;
     // End of variables declaration//GEN-END:variables
 }
