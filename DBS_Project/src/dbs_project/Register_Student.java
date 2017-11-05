@@ -5,6 +5,7 @@
  */
 package dbs_project;
 
+import java.sql.Connection;
 import javax.swing.JOptionPane;
 
 /**
@@ -231,6 +232,21 @@ int flag=0;
             return;
         }
         else{
+            String Student_ID=tf1.getText();
+            String Name =tf2.getText();
+            String D_O_B =tf3.getText();
+            String Room_no =tf4.getText();
+            String Block =tf5.getText();
+            String Semester =tf6.getText();
+            String Email =tf7.getText();
+            String phone =tf8.getText();
+            String Course =tf9.getText();
+            String Address =tf10.getText();
+            Connection conn=null;
+            
+            JOptionPane.showMessageDialog(null,"Submitted Succesfully");
+            
+            
             
         }
     }//GEN-LAST:event_submitActionPerformed
