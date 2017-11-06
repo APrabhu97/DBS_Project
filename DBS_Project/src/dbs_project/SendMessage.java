@@ -133,7 +133,7 @@ public class SendMessage extends javax.swing.JFrame {
        PreparedStatement pst;
         try {
             pst = conn.prepareStatement("insert into messages values('"+Login.username+"','"+toID+"','"+message+"','"+subj+"');");
-             pst.executeUpdate(); 
+             pst.execute(); 
         } catch (SQLException ex) {
             Logger.getLogger(SendMessage.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -169,7 +169,7 @@ public class StudentWarden extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel8MouseClicked
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
-        new Inbox().setVisible(true);
+        new Inbox(Login.username).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jLabel7MouseClicked
 
