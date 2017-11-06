@@ -6,6 +6,7 @@
 package dbs_project;
 
 import java.awt.Color;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -83,6 +84,11 @@ public class DBA extends javax.swing.JFrame {
 
         jLabel4.setText("Factory Reset Databases");
         jLabel4.setToolTipText("");
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 135, -1, -1));
 
         jLabel5.setText("Send notification(to all)");
@@ -122,8 +128,9 @@ public class DBA extends javax.swing.JFrame {
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
         try {
                     Connection conn = Conn.connect();
-                    PreparedStatement pst =   conn.prepareStatement("mysqldump test > dump.sql");
-                    pst.executeUpdate();    
+                    CallableStatement cStmt = conn.prepareCall("{call factory_reset()}");
+                    cStmt.execute(); 
+                    conn.close();
                                       
                     } 
                     catch (SQLException ex) {
@@ -156,6 +163,18 @@ public class DBA extends javax.swing.JFrame {
 new Login().setVisible(true);
 this.setVisible(false);// TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+       try {
+                    Connection conn = Conn.connect();
+                    PreparedStatement pst =   conn.prepareStatement("mysqldump test > dump.sql");
+                    pst.executeUpdate();    
+                                      
+                    } 
+                    catch (SQLException ex) {
+                    Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                }
+    }//GEN-LAST:event_jLabel4MouseClicked
 
     /**
      * @param args the command line arguments
