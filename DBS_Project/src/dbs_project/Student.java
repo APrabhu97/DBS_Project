@@ -75,6 +75,11 @@ public class Student extends javax.swing.JFrame {
         jLabel9.setText("Request Room Maintainance");
 
         jToggleButton2.setText("Logout");
+        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel10.setText("View Notices");
 
@@ -156,6 +161,11 @@ public class Student extends javax.swing.JFrame {
        new StudentProfile().setVisible(true);
        this.setVisible(false);
     }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+new Login().setVisible(true);
+this.setVisible(false);// TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     /**
      * @param args the command line arguments

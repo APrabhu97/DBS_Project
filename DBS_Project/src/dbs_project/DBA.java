@@ -61,7 +61,7 @@ public class DBA extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("Set New Passwords");
+        jLabel3.setText("Set New Password");
         jLabel3.setToolTipText("");
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -83,6 +83,11 @@ public class DBA extends javax.swing.JFrame {
         jLabel6.setText("<--Back");
 
         jButton1.setText("Logout");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel8.setText("Take Backup of Database");
         jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -181,6 +186,11 @@ public class DBA extends javax.swing.JFrame {
     private void jLabel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseExited
         jLabel2.setForeground(Color.BLACK); 
     }//GEN-LAST:event_jLabel2MouseExited
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+new Login().setVisible(true);
+this.setVisible(false);// TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

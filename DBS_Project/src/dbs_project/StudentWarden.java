@@ -47,6 +47,17 @@ public class StudentWarden extends javax.swing.JFrame {
         jLabel2.setText("Date,Time");
 
         jLabel3.setText("View Current Student Details");
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel3MouseExited(evt);
+            }
+        });
 
         jLabel4.setText("View/Update Watchlist");
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -82,6 +93,14 @@ public class StudentWarden extends javax.swing.JFrame {
         jToggleButton1.setText("Logout");
 
         jLabel9.setText("Add a Student");
+        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel9MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel9MouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -166,6 +185,27 @@ public class StudentWarden extends javax.swing.JFrame {
     private void jLabel8MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseExited
        jLabel8.setForeground(Color.BLACK); 
     }//GEN-LAST:event_jLabel8MouseExited
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+new LookupStudentDetails().setVisible(true);
+this.setVisible(false);// TODO add your handling code here:
+    }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void jLabel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseEntered
+ jLabel3.setForeground(Color.BLUE);         // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel3MouseEntered
+
+    private void jLabel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseExited
+ jLabel3.setForeground(Color.BLACK);         // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel3MouseExited
+
+    private void jLabel9MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseEntered
+ jLabel9.setForeground(Color.BLUE);         // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel9MouseEntered
+
+    private void jLabel9MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseExited
+ jLabel9.setForeground(Color.BLACK);         // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel9MouseExited
 
     /**
      * @param args the command line arguments

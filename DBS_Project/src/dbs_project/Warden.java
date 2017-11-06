@@ -157,11 +157,11 @@ public class Warden extends javax.swing.JFrame {
 
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Photo");
-        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 154, -1, -1));
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 150, -1, -1));
 
         lb1.setForeground(new java.awt.Color(255, 255, 255));
         lb1.setText("jLabel16");
-        getContentPane().add(lb1, new org.netbeans.lib.awtextra.AbsoluteConstraints(321, 39, 92, 104));
+        getContentPane().add(lb1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 40, 92, 104));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbs_project/d_login.jpg"))); // NOI18N
         jLabel9.setText("jLabel9");
