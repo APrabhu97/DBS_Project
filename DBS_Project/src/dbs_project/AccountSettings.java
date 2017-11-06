@@ -19,6 +19,7 @@ import java.util.logging.Logger;
  */
 public class AccountSettings extends javax.swing.JFrame {
     String username;
+    int arr;
     /**
      * Creates new form AccountSettings
      */
@@ -26,10 +27,11 @@ public class AccountSettings extends javax.swing.JFrame {
         initComponents();
         
     }
-    public AccountSettings(String uname){
+    public AccountSettings(String uname,int l){
         initComponents();
         jLabel2.setText(uname);
         username=uname;
+        arr=l;
         jLabel6.setVisible(false);
         jLabel7.setVisible(false);
         jLabel8.setVisible(false);
@@ -55,6 +57,7 @@ public class AccountSettings extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -106,6 +109,14 @@ public class AccountSettings extends javax.swing.JFrame {
         jLabel8.setText("Same as your old password.");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 249, -1, -1));
 
+        jLabel10.setText("<--BACK");
+        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel10MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
+
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbs_project/d_login.jpg"))); // NOI18N
         jLabel9.setText("jLabel9");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
@@ -144,6 +155,24 @@ public class AccountSettings extends javax.swing.JFrame {
         }
             
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
+       if(arr==0)
+       {
+           new Warden().setVisible(true);
+           this.setVisible(false);
+       }
+       if(arr==1)
+       {
+           new Caretaker().setVisible(true);
+           this.setVisible(false);
+       }
+       if(arr==2)
+       {
+           new Student().setVisible(true);
+           this.setVisible(false);
+       }
+    }//GEN-LAST:event_jLabel10MouseClicked
 
     /**
      * @param args the command line arguments
@@ -186,6 +215,7 @@ public class AccountSettings extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
