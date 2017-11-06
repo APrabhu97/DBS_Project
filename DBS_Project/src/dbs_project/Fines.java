@@ -5,17 +5,123 @@
  */
 package dbs_project;
 
+import java.awt.BorderLayout;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import static javax.swing.JFrame.EXIT_ON_CLOSE;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+
 /**
  *
  * @author sichi
  */
 public class Fines extends javax.swing.JFrame {
 
+    public Fines(){
+    initComponents();
+    }
     /**
      * Creates new form Fines
      */
-    public Fines() {
+    public Fines(int sID) {
         initComponents();
+        ArrayList columnNames = new ArrayList();
+        ArrayList data = new ArrayList();
+        initComponents();
+        try (Connection conn = Conn.connect();
+                    PreparedStatement pst =   conn.prepareStatement("Select * from fines where student_id="+sID);
+                    ResultSet rs = pst.executeQuery();)
+        {
+            ResultSetMetaData md = rs.getMetaData();
+            int columns = md.getColumnCount();
+
+            //  Get column names
+            for (int i = 1; i <= columns; i++)
+            {
+                columnNames.add( md.getColumnName(i) );
+            }
+
+            //  Get row data
+            while (rs.next())
+            {
+                ArrayList row = new ArrayList(columns);
+
+                for (int i = 1; i <= columns; i++)
+                {
+                    row.add( rs.getObject(i) );
+                }
+
+                data.add( row );
+            }
+        }
+        catch (SQLException e)
+        {
+            System.out.println( e.getMessage() );
+        }
+
+     
+        Vector columnNamesVector = new Vector();
+        Vector dataVector = new Vector();
+
+        for (int i = 0; i < data.size(); i++)
+        {
+            ArrayList subArray = (ArrayList)data.get(i);
+            Vector subVector = new Vector();
+            for (int j = 0; j < subArray.size(); j++)
+            {
+                subVector.add(subArray.get(j));
+            }
+            dataVector.add(subVector);
+        }
+
+        for (int i = 0; i < columnNames.size(); i++ )
+            columnNamesVector.add(columnNames.get(i));
+
+        //  Create table with database data    
+        JTable table = new JTable(dataVector, columnNamesVector)
+        {
+            public Class getColumnClass(int column)
+            {
+                for (int row = 0; row < getRowCount(); row++)
+                {
+                    Object o = getValueAt(row, column);
+
+                    if (o != null)
+                    {
+                        return o.getClass();
+                    }
+                }
+
+                return Object.class;
+            }
+        };
+
+        JScrollPane scrollPane = new JScrollPane( table );
+        getContentPane().add( scrollPane );
+
+        JPanel buttonPanel = new JPanel();
+        getContentPane().add( buttonPanel, BorderLayout.SOUTH );
+        Inbox frame = new Inbox();
+        frame.setDefaultCloseOperation( EXIT_ON_CLOSE );
+        frame.pack();
+        frame.setVisible(true);
+        try (Connection conn = Conn.connect();
+                    PreparedStatement pst =   conn.prepareStatement("Select sum(fines) from fines where student_id="+sID);
+                    ResultSet rs = pst.executeQuery();)
+        {
+            lb4.setText(rs.getString(0));
+        } catch (SQLException ex) {
+            Logger.getLogger(Fines.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -30,11 +136,9 @@ public class Fines extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lb4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -49,7 +153,7 @@ public class Fines extends javax.swing.JFrame {
 
         jLabel3.setText("Total Amount Due :");
 
-        jLabel4.setText("jLabel4");
+        lb4.setText("jLabel4");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -63,10 +167,6 @@ public class Fines extends javax.swing.JFrame {
             }
         ));
         jScrollPane1.setViewportView(jTable1);
-
-        jLabel5.setText("Name :");
-
-        jLabel6.setText("jLabel6");
 
         jLabel7.setText("Student ID :");
 
@@ -82,21 +182,6 @@ public class Fines extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(50, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel9)
-                        .addGap(86, 86, 86))))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
@@ -115,8 +200,17 @@ public class Fines extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel4)))
+                        .addComponent(lb4)))
                 .addGap(79, 79, 79))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel9))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,21 +221,19 @@ public class Fines extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel8)
                             .addComponent(jLabel2))
-                        .addGap(30, 30, 30))
+                        .addGap(62, 62, 62))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel9))
                         .addGap(18, 18, 18)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel9))
-                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel4))
+                    .addComponent(lb4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
@@ -193,13 +285,11 @@ public class Fines extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lb4;
     // End of variables declaration//GEN-END:variables
 }
