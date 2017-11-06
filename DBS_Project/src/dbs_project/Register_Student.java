@@ -34,7 +34,7 @@ int flag=0;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel5 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         tf3 = new javax.swing.JTextField();
@@ -62,6 +62,8 @@ int flag=0;
         jLabel6 = new javax.swing.JLabel();
         register = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
+
+        jLabel14.setText("jLabel5");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -127,10 +129,6 @@ int flag=0;
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(162, 162, 162)
-                .addComponent(submit)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(117, 117, 117)
                 .addComponent(register)
@@ -288,7 +286,6 @@ if(flag==0 || tf1.getText()==null
                    || tf9.getText()==null
                    || tf10.getText()==null
                    || tf11.getText()==null
-                   || tf12.getText()==null
                    ){
             JOptionPane.showMessageDialog(null,"Please fill all details");
             return;
@@ -395,6 +392,7 @@ String username = tf11.getText();
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

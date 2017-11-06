@@ -33,7 +33,6 @@ public class Student extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -58,8 +57,6 @@ public class Student extends javax.swing.JFrame {
                 jLabel8MouseClicked(evt);
             }
         });
-
-        jLabel3.setText("Give Attenance(Optional)");
 
         jLabel4.setText("View/Update Current Details");
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -114,8 +111,7 @@ public class Student extends javax.swing.JFrame {
                     .addComponent(jLabel9)
                     .addComponent(jLabel5)
                     .addComponent(jLabel7)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel3))
+                    .addComponent(jLabel4))
                 .addGap(0, 170, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -129,9 +125,7 @@ public class Student extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(43, 43, 43)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel7)
@@ -207,7 +201,6 @@ this.setVisible(false);// TODO add your handling code here:
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
