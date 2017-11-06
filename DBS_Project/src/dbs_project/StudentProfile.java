@@ -187,7 +187,7 @@ public class StudentProfile extends javax.swing.JFrame {
                 submitActionPerformed(evt);
             }
         });
-        getContentPane().add(submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(164, 431, -1, -1));
+        getContentPane().add(submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 430, -1, -1));
 
         jLabel7.setText("Date of Birth:");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 126, -1, -1));
