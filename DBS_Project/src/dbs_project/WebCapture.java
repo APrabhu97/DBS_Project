@@ -44,7 +44,7 @@ public class WebCapture {
                 else if(ch==1) // for student
                     ImageIO.write(image, "PNG", new File("C:\\Users\\mahe\\Desktop\\profile photos\\Student\\"+Student.sID+".jpg"));
                 else // for caretaker
-                   // ImageIO.write(image, "PNG", new File("C:\\Users\\mahe\\Desktop\\profile photos\\Caretaker\\"+Caretaker.wid+".jpg"));
+                    ImageIO.write(image, "PNG", new File("C:\\Users\\mahe\\Desktop\\profile photos\\Caretaker\\"+Caretaker.cID+".jpg"));
                 webcam.close();
     }
     public static void main(String[] args) throws IOException {

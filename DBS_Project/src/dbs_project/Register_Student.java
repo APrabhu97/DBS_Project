@@ -330,7 +330,7 @@ String username = tf11.getText();
        Connection conn = Conn.connect();
        PreparedStatement pst =   conn.prepareStatement("insert into login values('"+username+"' , '"+password+"')");
        PreparedStatement pst1 = conn.prepareStatement("insert into student values("+Integer.parseInt(tf1.getText())+",'"
-                                                                                    +tf2.getText()+"',null,'"
+                                                                                    +tf2.getText()+"','"
                                                                                     +tf3.getText()+"',"
                                                                                     +Integer.parseInt(tf4.getText())+","
                                                                                      +Integer.parseInt(tf5.getText())+","
@@ -338,8 +338,9 @@ String username = tf11.getText();
                                                                                     +tf7.getText()+"','"
                                                                                     +tf8.getText()+"','"
                                                                                     +tf9.getText()+"','"
-                                                                                    +tf10.getText()+"');");
+                                                                                    +tf10.getText()+"','"+username+"');");
        pst.execute();
+       pst1.execute();
        conn.close();
        return true;           
    }
