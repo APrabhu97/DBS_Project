@@ -83,6 +83,12 @@ public class StudentWarden extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel7MouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel7MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel7MouseExited(evt);
+            }
         });
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 79, -1, -1));
 
@@ -164,6 +170,14 @@ this.setVisible(false);// TODO add your handling code here:
     private void jLabel9MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseExited
  jLabel9.setForeground(Color.BLACK);         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel9MouseExited
+
+    private void jLabel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseEntered
+jLabel7.setForeground(Color.BLUE);         // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel7MouseEntered
+
+    private void jLabel7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseExited
+jLabel7.setForeground(Color.BLACK);         // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel7MouseExited
 
     /**
      * @param args the command line arguments

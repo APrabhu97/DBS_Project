@@ -132,7 +132,7 @@ public class SendMessage extends javax.swing.JFrame {
         cstmt = conn.prepareCall(
                 "{call sendALL('"+Login.username+"','"+TF3.getText()+"','"+"','"+TF2.getText()+"')}");
         cstmt.execute();
-        
+        conn.close();
     } catch (Exception ex) {
        
     }

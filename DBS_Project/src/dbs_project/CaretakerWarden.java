@@ -66,6 +66,11 @@ public class CaretakerWarden extends javax.swing.JFrame {
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 111, -1, -1));
 
         jToggleButton1.setText("Logout");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(312, 266, -1, -1));
 
         jLabel4.setText("Enroll  a Caretaker");
@@ -92,6 +97,11 @@ public class CaretakerWarden extends javax.swing.JFrame {
        new Register_Caretaker().setVisible(true);
        this.setVisible(false);
     }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+new Login().setVisible(true);
+this.setVisible(false);// TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     /**
      * @param args the command line arguments
