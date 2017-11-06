@@ -5,6 +5,7 @@
  */
 package dbs_project;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -44,6 +45,7 @@ public class SendMessage extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -51,21 +53,15 @@ public class SendMessage extends javax.swing.JFrame {
 
         jLabel1.setText("To :");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 29, -1, -1));
-
-        TF1.setText("jTextField1");
         getContentPane().add(TF1, new org.netbeans.lib.awtextra.AbsoluteConstraints(87, 26, 285, -1));
 
         jLabel2.setText("Subject :");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
-
-        TF2.setText("jTextField2");
         getContentPane().add(TF2, new org.netbeans.lib.awtextra.AbsoluteConstraints(87, 57, 285, -1));
 
         jLabel3.setText("Message :");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 115, -1, -1));
-
-        TF3.setText("jTextField3");
-        getContentPane().add(TF3, new org.netbeans.lib.awtextra.AbsoluteConstraints(87, 115, 285, 130));
+        getContentPane().add(TF3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, 285, 130));
 
         jButton1.setText("Send");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -87,9 +83,17 @@ public class SendMessage extends javax.swing.JFrame {
         jLabel5.setText("Insert username here");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(87, 88, -1, -1));
 
+        jButton2.setText("Send To All");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
+
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbs_project/d_login.jpg"))); // NOI18N
         jLabel6.setText("jLabel6");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(-6, 0, 410, 300));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, 300));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -114,6 +118,25 @@ public class SendMessage extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+         TF1.setText("");
+        TF1.setEnabled(false);
+         String subj=TF2.getText();
+        String message=TF3.getText();
+        CallableStatement cstmt = null;
+    double averageWeight = 0;
+    ResultSet rs = null;
+    try {
+        Connection conn = Conn.connect();
+        cstmt = conn.prepareCall(
+                "{call sendALL('"+Login.username+"','"+TF3.getText()+"','"+"','"+TF2.getText()+"')}");
+        cstmt.execute();
+        
+    } catch (Exception ex) {
+       
+    }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -155,6 +178,7 @@ public class SendMessage extends javax.swing.JFrame {
     private javax.swing.JTextField TF2;
     private javax.swing.JTextField TF3;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
