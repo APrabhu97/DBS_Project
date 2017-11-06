@@ -5,6 +5,19 @@
  */
 package dbs_project;
 
+import java.awt.BorderLayout;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Vector;
+import static javax.swing.JFrame.EXIT_ON_CLOSE;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+
 /**
  *
  * @author sichi
@@ -30,10 +43,11 @@ public class Watchlist extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jc = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,7 +57,7 @@ public class Watchlist extends javax.swing.JFrame {
 
         jLabel3.setText("Choose Senester :");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8" }));
+        jc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8" }));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -60,6 +74,13 @@ public class Watchlist extends javax.swing.JFrame {
 
         jButton1.setText("Update");
 
+        jButton2.setText("Check");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -73,14 +94,17 @@ public class Watchlist extends javax.swing.JFrame {
                             .addComponent(jLabel2)
                             .addGap(107, 107, 107)
                             .addComponent(jLabel1))
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(25, 25, 25)
-                            .addComponent(jLabel3)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGap(25, 25, 25)
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton2))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -93,11 +117,12 @@ public class Watchlist extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel2)))
-                .addGap(11, 11, 11)
+                .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
+                    .addComponent(jc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2))
+                .addGap(23, 23, 23)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
@@ -106,6 +131,91 @@ public class Watchlist extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        String sem=(String)jc.getSelectedItem();
+        ArrayList columnNames = new ArrayList();
+        ArrayList data = new ArrayList();
+        initComponents();
+        try (Connection conn = Conn.connect();
+                    PreparedStatement pst =   conn.prepareStatement("Select * from messages where toID = '"
+                            +sem+"'");
+                    ResultSet rs = pst.executeQuery();)
+        {
+            ResultSetMetaData md = rs.getMetaData();
+            int columns = md.getColumnCount();
+
+            //  Get column names
+            for (int i = 1; i <= columns; i++)
+            {
+                columnNames.add( md.getColumnName(i) );
+            }
+
+            //  Get row data
+            while (rs.next())
+            {
+                ArrayList row = new ArrayList(columns);
+
+                for (int i = 1; i <= columns; i++)
+                {
+                    row.add( rs.getObject(i) );
+                }
+
+                data.add( row );
+            }
+        }
+        catch (SQLException e)
+        {
+            System.out.println( e.getMessage() );
+        }
+
+     
+        Vector columnNamesVector = new Vector();
+        Vector dataVector = new Vector();
+
+        for (int i = 0; i < data.size(); i++)
+        {
+            ArrayList subArray = (ArrayList)data.get(i);
+            Vector subVector = new Vector();
+            for (int j = 0; j < subArray.size(); j++)
+            {
+                subVector.add(subArray.get(j));
+            }
+            dataVector.add(subVector);
+        }
+
+        for (int i = 0; i < columnNames.size(); i++ )
+            columnNamesVector.add(columnNames.get(i));
+
+        //  Create table with database data    
+        JTable table = new JTable(dataVector, columnNamesVector)
+        {
+            public Class getColumnClass(int column)
+            {
+                for (int row = 0; row < getRowCount(); row++)
+                {
+                    Object o = getValueAt(row, column);
+
+                    if (o != null)
+                    {
+                        return o.getClass();
+                    }
+                }
+
+                return Object.class;
+            }
+        };
+
+        JScrollPane scrollPane = new JScrollPane( table );
+        getContentPane().add( scrollPane );
+
+        JPanel buttonPanel = new JPanel();
+        getContentPane().add( buttonPanel, BorderLayout.SOUTH );
+        Inbox frame = new Inbox();
+        frame.setDefaultCloseOperation( EXIT_ON_CLOSE );
+        frame.pack();
+        frame.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -144,11 +254,12 @@ public class Watchlist extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JComboBox<String> jc;
     // End of variables declaration//GEN-END:variables
 }

@@ -23,6 +23,9 @@ public class DBARecoverPassword extends javax.swing.JFrame {
      */
     public DBARecoverPassword() {
         initComponents();
+        l1.setVisible(false);
+        l2.setVisible(false);
+        l3.setVisible(false);
     }
 
     /**
@@ -40,11 +43,11 @@ public class DBARecoverPassword extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        l2 = new javax.swing.JLabel();
+        l1 = new javax.swing.JLabel();
+        l3 = new javax.swing.JLabel();
+        pw = new javax.swing.JPasswordField();
+        pw1 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,17 +66,11 @@ public class DBARecoverPassword extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.setText("jTextField1");
+        l2.setText("Password Succesfully Changed!!!");
 
-        jTextField2.setText("jTextField2");
+        l1.setText("Passwords Dont Match.");
 
-        jTextField3.setText("jTextField3");
-
-        jLabel6.setText("Password Succesfully Changed!!!");
-
-        jLabel7.setText("Passwords Dont Match.");
-
-        jLabel8.setText("Same as your old password.");
+        l3.setText("Same as your old password.");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -97,12 +94,12 @@ public class DBARecoverPassword extends javax.swing.JFrame {
                                                 .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                         .addGap(22, 22, 22)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
-                                            .addComponent(jTextField2)
-                                            .addComponent(jTextField1)))
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel8))))
+                                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
+                                            .addComponent(pw)
+                                            .addComponent(pw1)))
+                                    .addComponent(l2)
+                                    .addComponent(l1)
+                                    .addComponent(l3))))
                         .addGap(0, 39, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -121,22 +118,22 @@ public class DBARecoverPassword extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pw, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pw1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButton1)
                         .addGap(21, 21, 21))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel7)
+                        .addComponent(l1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel6)
+                        .addComponent(l2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel8)
+                        .addComponent(l3)
                         .addGap(36, 36, 36))))
         );
 
@@ -145,8 +142,8 @@ public class DBARecoverPassword extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String uname=jTextField1.getText();
-        String npass=jTextField2.getText();
-        String cnpass1=jTextField3.getText();
+        String npass=new String(pw.getPassword());
+        String cnpass1=new String(pw1.getPassword());
         if(npass.equals(cnpass1)&&(!npass.isEmpty()))
         {    String cnpass=HashingPassword.hashPassword(cnpass1);   
             try{
@@ -154,14 +151,17 @@ public class DBARecoverPassword extends javax.swing.JFrame {
              PreparedStatement pst =   conn.prepareStatement("Select * from login where username = '"
                                 +uname+"'");
             ResultSet rs = pst.executeQuery();    
-            rs.next();
-            String oldpassword=rs.getString(2);
-            if(!(oldpassword.equals(HashingPassword.hashPassword(npass))))
-            {PreparedStatement pst1 =   conn.prepareStatement("update login set password='"+cnpass+"'where username='"+uname);
-             pst1.executeUpdate();
-             jLabel6.setVisible(true);}
-            else {
-                jLabel8.setVisible(true);
+            if(rs.next()){
+                String oldpassword=rs.getString(2);
+                if(!(oldpassword.equals(HashingPassword.hashPassword(npass))))
+                    {
+                        PreparedStatement pst1 =   conn.prepareStatement("update login set password='"+cnpass+"'where username='"+uname+"';");
+                        pst1.executeUpdate();
+                        l2.setVisible(true);
+                    }
+                else {
+                    l3.setVisible(true);
+            }
             }
             } catch (SQLException ex) {
                 Logger.getLogger(AccountSettings.class.getName()).log(Level.SEVERE, null, ex);
@@ -170,7 +170,7 @@ public class DBARecoverPassword extends javax.swing.JFrame {
         }
         else
         {
-           jLabel7.setVisible(true); 
+           l1.setVisible(true); 
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -215,11 +215,11 @@ public class DBARecoverPassword extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JLabel l1;
+    private javax.swing.JLabel l2;
+    private javax.swing.JLabel l3;
+    private javax.swing.JPasswordField pw;
+    private javax.swing.JPasswordField pw1;
     // End of variables declaration//GEN-END:variables
 }
