@@ -67,7 +67,7 @@ public class CaretakerProfile extends javax.swing.JFrame {
       //      sCourse = rs.getString(2);
         //    tf9.setText(sName);
             Icon src = new ImageIcon(new ImageIcon("C:\\Users\\mahe\\Desktop\\profile photos\\Caretaker\\"+Caretaker.cID+".jpg").getImage().getScaledInstance(jLabel4.getWidth(), jLabel4.getHeight(), Image.SCALE_SMOOTH));
-            jLabel4.setIcon(src);
+            lb1.setIcon(src);
                         
         } catch (SQLException ex) {
             Logger.getLogger(Warden.class.getName()).log(Level.SEVERE, null, ex);

@@ -68,7 +68,7 @@ public class StudentProfile extends javax.swing.JFrame {
             tf7.setText(sName);
             sCourse = rs.getString(2);
             tf9.setText(sName);
-            Icon src = new ImageIcon(new ImageIcon("C:\\Users\\mahe\\Desktop\\profile photos\\Student\\"+Warden.wID+".jpg").getImage().getScaledInstance(jLabel4.getWidth(), jLabel4.getHeight(), Image.SCALE_SMOOTH));
+            Icon src = new ImageIcon(new ImageIcon("C:\\Users\\mahe\\Desktop\\profile photos\\Student\\"+Student.sID+".jpg").getImage().getScaledInstance(jLabel4.getWidth(), jLabel4.getHeight(), Image.SCALE_SMOOTH));
             jLabel4.setIcon(src);
                         
         } catch (SQLException ex) {

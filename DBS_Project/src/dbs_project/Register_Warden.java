@@ -8,6 +8,7 @@ package dbs_project;
 import java.security.MessageDigest;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -53,6 +54,8 @@ public class Register_Warden extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         tf1 = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        tf9 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,51 +95,54 @@ public class Register_Warden extends javax.swing.JFrame {
             }
         });
 
+        jLabel9.setText("Address ;");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(63, 63, 63))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(register)
+                .addGap(81, 81, 81))
             .addGroup(layout.createSequentialGroup()
                 .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addGap(71, 71, 71)
-                        .addComponent(tf7, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1)
-                            .addGroup(layout.createSequentialGroup()
+                        .addComponent(tf7, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel2)
+                        .addComponent(jLabel1)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel5)
+                            .addGap(69, 69, 69)
+                            .addComponent(tf6, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel6)
+                                .addComponent(jLabel4))
+                            .addGap(46, 46, 46)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(tf4)
+                                .addComponent(tf3)
+                                .addComponent(tf5)
+                                .addComponent(pw)
+                                .addComponent(tf1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel7)
-                                .addGap(39, 39, 39)
-                                .addComponent(tf8, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(69, 69, 69)
-                                .addComponent(tf6, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel4))
-                                .addGap(46, 46, 46)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tf4)
-                                    .addComponent(tf3)
-                                    .addComponent(tf5)
-                                    .addComponent(pw)
-                                    .addComponent(tf1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(108, 108, 108)
-                        .addComponent(register))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(92, 92, 92)
-                        .addComponent(jButton1)))
+                                .addComponent(jLabel9))
+                            .addGap(39, 39, 39)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(tf8, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                                .addComponent(tf9)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -174,11 +180,15 @@ public class Register_Warden extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(tf8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(tf9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addComponent(register)
-                .addGap(36, 36, 36))
+                .addGap(27, 27, 27))
         );
 
         pack();
@@ -246,6 +256,46 @@ private boolean validate_login(String username,String password) {
             tf1.setText("");
             pw.setText("");
         }
+                if(flag==0 || tf1.getText()==null
+                   || tf3.getText()==null
+                   || tf4.getText()==null
+                   || tf5.getText()==null
+                   || tf6.getText()==null
+                   || tf7.getText()==null
+                   || tf8.getText()==null
+                   || tf9.getText()==null
+                   
+                   ){
+            JOptionPane.showMessageDialog(null,"Please fill all details");
+            return;
+        }
+        else{
+            String Warden_ID=tf3.getText();
+            String Name =tf4.getText();
+            String D_O_B =tf5.getText();
+            String Block =tf6.getText();
+            String Email =tf7.getText();
+            String phone =tf8.getText();
+            String Address =tf9.getText();
+            String uname=tf1.getText();
+            String pass=pw.getText();
+            try {
+               Connection conn = Conn.connect();
+               PreparedStatement pst =   conn.prepareStatement("insert into warden_details values('"+Warden_ID+"','"+Name+"','"+D_O_B+"','"+Block+"','"+Email+"','"+phone+"','"+Address+"','"+uname+"')");
+               pst.execute();
+               String password1=HashingPassword.hashPassword(pass);
+               PreparedStatement pst1 =   conn.prepareStatement("insert into login values('"+uname+"','"+password1+"')");
+               pst1.execute();
+               conn.close();
+           } catch (SQLException ex) {
+               Logger.getLogger(AddWatchlistEntry.class.getName()).log(Level.SEVERE, null, ex);
+           }
+            
+            JOptionPane.showMessageDialog(null,"Submitted Succesfully");
+            
+            
+            
+        }
     }//GEN-LAST:event_registerActionPerformed
 
     private void tf1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf1ActionPerformed
@@ -297,6 +347,7 @@ private boolean validate_login(String username,String password) {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPasswordField pw;
     private javax.swing.JButton register;
     private javax.swing.JTextField tf1;
@@ -306,5 +357,6 @@ private boolean validate_login(String username,String password) {
     private javax.swing.JTextField tf6;
     private javax.swing.JTextField tf7;
     private javax.swing.JTextField tf8;
+    private javax.swing.JTextField tf9;
     // End of variables declaration//GEN-END:variables
 }
