@@ -157,9 +157,11 @@ public class Fines extends javax.swing.JFrame {
         jLabel2.setText("<--Back");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
 
+        jLabel3.setForeground(new java.awt.Color(204, 204, 204));
         jLabel3.setText("Total Amount Due :");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(249, 203, -1, -1));
 
+        lb4.setForeground(new java.awt.Color(255, 255, 255));
         lb4.setText("jLabel4");
         getContentPane().add(lb4, new org.netbeans.lib.awtextra.AbsoluteConstraints(352, 203, -1, -1));
 
@@ -188,15 +190,17 @@ public class Fines extends javax.swing.JFrame {
         jLabel9.setText("jLabel9");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 55, -1, -1));
 
+        jLabel10.setForeground(new java.awt.Color(204, 204, 204));
         jLabel10.setText("Last Date to Pay :");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(249, 228, -1, -1));
 
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("jLabel11");
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(346, 228, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbs_project/d_login.jpg"))); // NOI18N
         jLabel4.setText("jLabel4");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 290));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 290));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
