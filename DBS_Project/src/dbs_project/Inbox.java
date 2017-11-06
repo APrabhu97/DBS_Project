@@ -32,7 +32,7 @@ public class Inbox extends javax.swing.JFrame {
         ArrayList data = new ArrayList();
         initComponents();
         try (Connection conn = Conn.connect();
-                    PreparedStatement pst =   conn.prepareStatement("Select * from messages where toID = '"
+                    PreparedStatement pst =   conn.prepareStatement("Select * from messages where to_ID = '"
                             +TOID+"'");
                     ResultSet rs = pst.executeQuery();)
         {

@@ -68,6 +68,11 @@ public class Student extends javax.swing.JFrame {
         jLabel7.setText("Apply for Leave");
 
         jLabel5.setText("Send Message/Suggestion to Warden");
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+        });
 
         jLabel9.setText("Request Room Maintainance");
 
@@ -160,6 +165,11 @@ public class Student extends javax.swing.JFrame {
 new Login().setVisible(true);
 this.setVisible(false);// TODO add your handling code here:
     }//GEN-LAST:event_jToggleButton2ActionPerformed
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        new SendMessage().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jLabel5MouseClicked
 
     /**
      * @param args the command line arguments
