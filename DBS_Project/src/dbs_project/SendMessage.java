@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -107,7 +108,8 @@ public class SendMessage extends javax.swing.JFrame {
        PreparedStatement pst;
         try {
             pst = conn.prepareStatement("insert into messages values('"+Login.username+"','"+toID+"','"+message+"','"+subj+"');");
-             pst.execute(); 
+             pst.execute();
+              JOptionPane.showMessageDialog(null,"Message sent");
         } catch (SQLException ex) {
             Logger.getLogger(SendMessage.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -130,11 +132,12 @@ public class SendMessage extends javax.swing.JFrame {
     try {
         Connection conn = Conn.connect();
         cstmt = conn.prepareCall(
-                "{call sendALL('"+Login.username+"','"+TF3.getText()+"','"+"','"+TF2.getText()+"')}");
+                "{call sendALL('"+Login.username+"','"+TF3.getText()+"','"+TF2.getText()+"')}");
         cstmt.execute();
         conn.close();
+        JOptionPane.showMessageDialog(null,"Messages sent");
     } catch (Exception ex) {
-       
+       System.out.println(ex+"");
     }
     }//GEN-LAST:event_jButton2ActionPerformed
 

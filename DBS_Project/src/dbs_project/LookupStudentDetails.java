@@ -74,12 +74,11 @@ public class LookupStudentDetails extends javax.swing.JFrame {
         tf2 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jTextField1.setText("jTextField1");
         getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, 89, -1));
 
         jLabel1.setText("Student ID :");
@@ -152,11 +151,19 @@ public class LookupStudentDetails extends javax.swing.JFrame {
 
         jLabel4.setForeground(new java.awt.Color(204, 204, 204));
         jLabel4.setText("jLabel4");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 220, 121, 114));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 220, 121, 114));
 
         jLabel13.setForeground(new java.awt.Color(204, 204, 204));
         jLabel13.setText("Image");
         getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(396, 361, -1, -1));
+
+        jButton2.setText("Remove Student");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, -1, -1));
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dbs_project/d_login.jpg"))); // NOI18N
         jLabel14.setText("jLabel14");
@@ -216,6 +223,20 @@ public class LookupStudentDetails extends javax.swing.JFrame {
     }
        
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        tf1=jTextField1.getText();
+        if(!tf1.isEmpty())
+        {
+            try
+        {
+        Connection conn = Conn.connect();
+        PreparedStatement pst =   conn.prepareStatement("delete from student where studentID = '"
+                                +tf1+"'");
+       pst.execute(); 
+        }catch(Exception e){}
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
     
     /**
      * @param args the command line arguments
@@ -254,6 +275,7 @@ public class LookupStudentDetails extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
